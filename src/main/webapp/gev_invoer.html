@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>registratie</title>
+<link rel="stylesheet" type="text/css" href="general.css">
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="functions.js"></script>
+</head>
+
+<body>
+	<h1>REGISTRATIE: GEGEVENS INVOEREN</h1>
+
+	<div id="textbox">
+		<br /> INFORMATIE OVER DE REGISTRATIE<br /> USERNAME MOET UNIEK
+		ZIJN, ANDERS GAAT HET NIET<br /> ONTHOUDT JE USERNAME GOED - WANT
+		DEZE HEB JE LATER NODIG OM GEGEVENS IN TE ZIEN EN OP TE VRAGEN!<br />
+		<br />
+		<br />
+		<form id="regiform">
+			<table>
+				<tr>
+					<td>USERNAME:</td>
+					<td><input type="text" name="username"></input></td>
+				</tr>
+				<tr>
+					<td>WACHTWOORD:</td>
+					<td><input type="text" name="wachtwoord"></input></td>
+				</tr>
+				<tr>
+					<td>VOORnaam:</td>
+					<td><input type="text" name="voornaam"></input></td>
+				</tr>
+				<tr>
+					<td>ACHTERnaam:</td>
+					<td><input type="text" name="achternaam"></input></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" value="REGISTREREN"
+						name="registreren" id="smallbutton" onClick="regiGebruiker()"></input></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+</body>
+
+
+</html>

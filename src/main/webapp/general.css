@@ -1,0 +1,198 @@
+@CHARSET "ISO-8859-1";
+
+.cookiebox {
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: -5px;
+	height: 100px;
+	top: 700px;
+	text-align: center;
+	position: fixed;
+}
+
+.message {
+	top: -250px;
+	left: 0;
+	width: 100%;
+	transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+}
+
+/*When Clicked */
+#toggle:checked {
+	margin-top: 400px;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+
+#toggle:checked ~ .message {
+	top: 400px;
+}
+
+#toggle:checked+label:after {
+	margin-top: 400px;
+}
+
+
+/*
+* === ALGEMENE OPMAAK ===
+*/
+body {
+	background-color: #eafffb;
+	text-align: center;
+	font-family: Calibri;
+	color: #1c5f52;
+}
+
+h1 {
+	font-weight: strong;
+	font-size: 30px;
+	border-bottom: 3px solid #1c5f52;
+	text-transform: uppercase;
+}
+
+#textbox {
+	margin: auto;
+	background-color: white;
+	text-align: left;
+	font-size: 16px;
+	width: 600px;
+	padding: 10px;
+	box-shadow: 10px 10px 5px #87c4b8;
+}
+
+/*
+* === NAVIGATIE ===
+*/
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px #87c4b8;
+	padding: 3px;
+	z-index: 1;
+}
+
+.dropdown-content a:hover {
+	text-transform: lowercase;
+	font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+#navbar {
+	border-bottom: 3px solid #1c5f52;
+	margin-bottom: 20px;
+	padding-bottom: -10px;
+	margin-top: -15px;
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+
+#navbar ul {
+	list-style-type: none;
+	display: inline-block;
+	position: relative;
+}
+
+#navbar li {
+	float: left;
+}
+
+#navbar li a {
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+	text-transform: lowercase;
+	color: #1c5f52;
+}
+
+#navbar li a:hover {
+	text-transform: uppercase;
+}
+
+/*
+* === GEGEVENS ====================================================================================
+*/
+#wijzig {
+	margin: 0 auto;
+}
+
+#updateform input {
+	margin: 3px;
+	position: right;
+}
+
+#zoekInput {
+	align: center;
+	font-size: 16px;
+	padding: 5px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+
+#alles td {
+	width: 300px;
+	border: 1px solid #1c5f52;
+}
+
+#alles th {
+	text-align: center;
+	background-color: #1c5f52;
+	color: white;
+	text-transform: uppercase;
+}
+
+/*
+* === BUTTONS ====================================================================================
+*/
+.smallbutton {
+	background-color: white;
+	border: 1px solid #1c5f52;
+	border-radius: 30px;
+	padding: 5px;
+	color: #1c5f52;
+}
+
+#smallbutton {
+	background-color: white;
+	border: 1px solid #1c5f52;
+	border-radius: 30px;
+	padding: 5px;
+	color: #1c5f52;
+}
+
+#t_button {
+	background-color: white;
+	border: 1px solid #1c5f52;
+	border-radius: 30px;
+	padding: 5px;
+	color: #1c5f52;
+}
+
+#regi_button {
+	background-color: white;
+	border: 1px solid #1c5f52;
+	border-radius: 30px;
+	padding: 5px;
+	color: #1c5f52;
+	font-size: 20px;
+}
+
+#gem_button {
+	background-color: white;
+	border: 1px solid #1c5f52;
+	border-radius: 30px;
+	padding: 5px;
+	color: #1c5f52;
+	font-size: 24px;
+}

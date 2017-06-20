@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>inloggen</title>
+<link rel="stylesheet" type="text/css" href="general.css">
+<script src="inlog.js"></script>
+</head>
+
+<body>
+	<h1>INLOGGEN</h1>
+
+	<div id="textbox">
+	<br />
+		JE MOET EERST INLOGGEN VOORDAT JE GEGEVENS IN KUNT KIJKEN. VUL JE
+		USERNAME EN WACHTWOORD IN DIE JE HEBT GEBRUIKT TIJDENS DE REGISTRATIE!<br />
+
+		<form action="/slaapapp/restservices/login" method="post" name="sender">
+			<table>
+				<tr>
+					<td>USERNAME:</td>
+					<td><input type="text" name="username"></input></td>
+				</tr>
+				<tr>
+					<td>WACHTWOORD:</td>
+					<td><input type="password" name="wachtwoord"></input></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="/slaapapp/gegevens.html"><input type="submit" value="LOGIN"
+						name="login" id="smallbutton" onClick="updateMessage()"></input></a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+</body>
+
+</html>

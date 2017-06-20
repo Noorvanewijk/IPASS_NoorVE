@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>overzicht van de gegevens</title>
+<link rel="stylesheet" type="text/css" href="general.css">
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="gegevens.js"></script>
+</head>
+
+<body>
+	<h1>OVERZICHT VAN DE GEGEVENS</h1>
+
+	<div id="navbar">
+		<ul>
+			<li><a href="/slaapapp/index.html">index</a></li>
+			<li><a href="/slaapapp/tijd_invoer.html">tijden invoeren</a></li>
+			<li><a href="/slaapapp/advies.html">advies</a></li>
+		</ul>
+	</div>
+
+	<div id="textbox">
+	
+		<input type="text" id="zoekInput" onkeyup="zoekGegevens()"
+			placeholder="Zoek bepaalde datum..."> <br />
+		<table id="alles">
+			<tr>
+				<th>Datum</th>
+				<th>Begintijd</th>
+				<th>Eindtijd</th>
+				<th>Totale tijd</th>
+			</tr>
+		</table>
+		<table id="wijzig">
+			<tr>
+				<td colspan="2"><input type="button" id="smallbutton"
+					value="BEREKEN GEMIDDELDE" onclick="CountRows()" /><br /> <br />
+					<br /> VERKEERDE TIJDEN ERGENS INGEVULD?? PAS ZE DAN HIER AAN:<br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form id="updateform" enctype="application/x-www-form-urlencoded">
+						<input type="text" placeholder="username" id="username"
+							name="username"></input><br /> <input type="date" id="datum"
+							name="datum" /><br /> BEGINTIJD: <input type="time"
+							id="begintijd" name="begintijd" /><br /> EINDTIJD: <input
+							type="time" placeholder="eindtijd" id="eindtijd" name="eindtijd" />
+					</form>
+				</td>
+				<td><input type="button" id="put" onClick="updateGegevens()"
+					value="Update" class="smallbutton" /></td>
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+
+</html>
