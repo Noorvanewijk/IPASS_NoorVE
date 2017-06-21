@@ -1,35 +1,10 @@
-$(document).ready(function(){
-    $(".btn1").click(function(){
-        $("p").slideUp();
-    });
-    $(".btn2").click(function(){
-        $("p").slideDown();
-    });
-});
-
-function gebruikerLogin() {
-	console.log("doe het!!");
-	var uri = "/slaapapp/restservices/authentication";
-
-	$.ajax(uri, {
-		type : "post",
-		data : $("#inlog").serialize(),
-		success : function(response) {
-			alert("Gegevens toegevoegd!");
-		},
-		error : function(response) {
-			alert("Er is geen gebruiker met deze naam!");
-		}
-	});
-};
-
+//Functie voor het toevoegen van tijden aan de database
 function voegToe() {
-	console.log("doe het!!");
 	var uri = "/slaapapp/restservices/voegtoe/";
 
 	$.ajax(uri, {
 		type : "post",
-		data : $("#voegtoe").serialize() + '&String=' + String,
+		data : $("#voegtoe").serialize() + '&String=' + String, //zet alle data die uit het form is gehaald om tot een String
 		success : function(response) {
 			alert("Gegevens toegevoegd!");
 		},
@@ -39,8 +14,8 @@ function voegToe() {
 	});
 };
 
+//functie voor registratie van een gebruiker: gebruiker toevoegen aan db
 function regiGebruiker() {
-	console.log("doe het!!");
 	var uri = "/slaapapp/restservices/register";
 
 	$
@@ -58,8 +33,10 @@ function regiGebruiker() {
 					});
 };
 
+
+//functie voor het deleten van data uit de lijst
 function deleteGebruiker() {
-	console.log("doe het!!");
+	//het specifiek op username, dus haal die op en stop die in de uri
 	var uri = "/slaapapp/restservices/deletegebruiker/" + $("#username").val();
 
 	$
@@ -76,22 +53,4 @@ function deleteGebruiker() {
 									+ "Check of de gebruikersnaam en het wachtwoord wel overeenkomen.");
 						}
 					});
-};
-
-function loginGebruiker() {
-	console.log("doe het!!");
-	var uri = "/slaapapp/restservices/login/"
-
-	$.ajax(uri, {
-		type : "post",
-		data : $("#loginform").serialize(),
-		dataType: String,
-		success : function(response) {
-			if (data == null)
-				alert("yay");
-		},
-		error : function(response) {
-			alert("Er is iets mis met de server, check alsjeblieft je internetverbinding!");
-		}
-	});
 };

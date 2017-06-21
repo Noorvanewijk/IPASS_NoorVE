@@ -1,56 +1,21 @@
 @CHARSET "ISO-8859-1";
 
-.cookiebox {
-	font-weight: bold;
-	font-size: 18px;
-	margin-left: -5px;
-	height: 100px;
-	top: 700px;
-	text-align: center;
-	position: fixed;
-}
-
-.message {
-	top: -250px;
-	left: 0;
-	width: 100%;
-	transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
-}
-
-/*When Clicked */
-#toggle:checked {
-	margin-top: 400px;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-}
-
-#toggle:checked ~ .message {
-	top: 400px;
-}
-
-#toggle:checked+label:after {
-	margin-top: 400px;
-}
-
-
-/*
-* === ALGEMENE OPMAAK ===
-*/
+/* === ALGEMENE OPMAAK === */
+/* opmaak van de body */
 body {
 	background-color: #eafffb;
 	text-align: center;
 	font-family: Calibri;
 	color: #1c5f52;
 }
-
+/*opmaak van de titel*/
 h1 {
 	font-weight: strong;
 	font-size: 30px;
 	border-bottom: 3px solid #1c5f52;
 	text-transform: uppercase;
 }
-
+/*textbox voor alle tekst/content*/
 #textbox {
 	margin: auto;
 	background-color: white;
@@ -61,33 +26,8 @@ h1 {
 	box-shadow: 10px 10px 5px #87c4b8;
 }
 
-/*
-* === NAVIGATIE ===
-*/
-.dropdown {
-	position: relative;
-	display: inline-block;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: white;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px #87c4b8;
-	padding: 3px;
-	z-index: 1;
-}
-
-.dropdown-content a:hover {
-	text-transform: lowercase;
-	font-weight: bold;
-}
-
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
+/* === NAVIGATIE === */
+/* navigatie bar bovenaan */
 #navbar {
 	border-bottom: 3px solid #1c5f52;
 	margin-bottom: 20px;
@@ -119,25 +59,35 @@ h1 {
 #navbar li a:hover {
 	text-transform: uppercase;
 }
+/*dropdown content in de navigatie bar*/
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
 
-/*
-* === GEGEVENS ====================================================================================
-*/
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px #87c4b8;
+	padding: 3px;
+	z-index: 1;
+}
+
+.dropdown-content a:hover {
+	text-transform: lowercase;
+	font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* === GEGEVENS.HTML === */
+/*tabellen*/
 #wijzig {
 	margin: 0 auto;
-}
-
-#updateform input {
-	margin: 3px;
-	position: right;
-}
-
-#zoekInput {
-	align: center;
-	font-size: 16px;
-	padding: 5px;
-	border: 1px solid #ddd;
-	margin-bottom: 12px;
 }
 
 #alles td {
@@ -152,9 +102,22 @@ h1 {
 	text-transform: uppercase;
 }
 
-/*
-* === BUTTONS ====================================================================================
-*/
+/*javascript zoekfunctie*/
+#updateform input {
+	margin: 3px;
+	position: right;
+}
+
+#zoekInput {
+	align: center;
+	font-size: 16px;
+	padding: 5px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+
+/* === BUTTONS === */
+/*zowel class als id, voor het geval dat*/
 .smallbutton {
 	background-color: white;
 	border: 1px solid #1c5f52;
@@ -171,28 +134,36 @@ h1 {
 	color: #1c5f52;
 }
 
-#t_button {
-	background-color: white;
-	border: 1px solid #1c5f52;
-	border-radius: 30px;
-	padding: 5px;
-	color: #1c5f52;
+/* === COOKIE MESSAGE @ INDEX.HTML === */
+/*voor de content*/
+.cookiebox {
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: -5px;
+	height: 100px;
+	top: 700px;
+	text-align: center;
+	position: fixed;
+}
+/*message in de cookiebox*/
+.message {
+	top: -250px;
+	left: 0;
+	width: 100%;
+	transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+}
+/*toggle trigger*/
+#toggle:checked {
+	margin-top: 400px;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
 }
 
-#regi_button {
-	background-color: white;
-	border: 1px solid #1c5f52;
-	border-radius: 30px;
-	padding: 5px;
-	color: #1c5f52;
-	font-size: 20px;
+#toggle:checked ~ .message {
+	top: 400px;
 }
 
-#gem_button {
-	background-color: white;
-	border: 1px solid #1c5f52;
-	border-radius: 30px;
-	padding: 5px;
-	color: #1c5f52;
-	font-size: 24px;
+#toggle:checked+label:after {
+	margin-top: 400px;
 }

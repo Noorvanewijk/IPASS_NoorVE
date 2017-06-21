@@ -4,29 +4,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>index</title>
+<!-- Importeer CSS -->
 <link rel="stylesheet" type="text/css" href="general.css">
-<script src="functions.js"></script>
 </head>
 
 <body>
+	<!-- Titel -->
 	<h1>INDEX</h1>
 
+	<!-- Navigatie -->
 	<div id="navbar">
 		<ul>
+			<li><a href="/slaapapp/index.html">index</a></li>
+			<li><a href="/slaapapp/advies.html">advies</a></li>
 			<li><a href="/slaapapp/gev_invoer.html">registreren</a></li>
 			<li>
 				<div class="dropdown">
+					<!-- Dropdown navigatie -->
 					<span>gebruikerscontent</span>
 					<div class="dropdown-content">
 						<a href="/slaapapp/tijd_invoer.html">tijden invoeren</a><br /> <a
-							href="/slaapapp/inlog.html">gegevens inkijken</a><br />
+							href="/slaapapp/inlog.html">gegevens inkijken</a><br /> <a
+							href="/slaapapp/admin.html">administratie</a><br />
 					</div>
 				</div>
 			</li>
-			<li><a href="/slaapapp/advies.html">advies</a></li>
 		</ul>
 	</div>
 
+	<!-- Content -->
 	<div id="textbox">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
 		tristique, elit at feugiat congue, enim nisi eleifend augue, non
@@ -66,10 +72,11 @@
 		ex velit ut massa.
 	</div>
 
+	<!-- Melding over de cookies -->
 	<div class="cookiebox">
 		<table>
 			<tr>
-				<td><input type="checkbox" name="toggle" id="toggle" /></td>
+				<td><input type="checkbox" name="toggle" id="toggle" /></td> <!-- check box met toggle trigger -->
 				<td><label for="toggle">Ik accepteer de cookies</label></td>
 			</tr>
 		</table>

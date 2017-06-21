@@ -3,17 +3,16 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>inloggen</title>
+<title>administratie</title>
 <!-- Importeer CSS, jquery en javascript -->
 <link rel="stylesheet" type="text/css" href="general.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="inlog.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="functions.js"></script>
 </head>
 
 <body>
 	<!-- Titel -->
-	<h1>INLOGGEN</h1>
+	<h1>ADMINISTRATIE</h1>
 
 	<!-- Navigatie -->
 	<div id="navbar">
@@ -37,28 +36,21 @@
 
 	<!-- Content -->
 	<div id="textbox">
-		<br /> JE MOET EERST INLOGGEN VOORDAT JE GEGEVENS IN KUNT KIJKEN. VUL
-		JE USERNAME EN WACHTWOORD IN DIE JE HEBT GEBRUIKT TIJDENS DE
-		REGISTRATIE!<br />
+		ALS EEN ACCOUNT WORDT VERWIJDERD VERDWIJNEN OOK ALLE GEGEVENS DIE
+		HIERAAN GELINKT WAREN.<br /> DIT PROCES IS <strong>ONOMKEERBAAR</strong>,
+		WEET U DIT ZEKER?<br /> <br />
 
-		<form name="sender" id="loginform">
-			<!-- formulier waar de gegevens van worden opgehaald en die ook een cookie opslaat -->
-			<table>
-				<tr>
-					<td>USERNAME:</td>
-					<td><input type="text" name="username"></input></td>
-				</tr>
-				<tr>
-					<td>WACHTWOORD:</td>
-					<td><input type="password" name="wachtwoord"></input></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" value="LOGIN"
-						name="login" id="smallbutton"></input> <!-- Klikken op de button triggered de functie -->
-					</td>
-				</tr>
-			</table>
+		<form id="deleteform" enctype="application/x-www-form-urlencoded">
+			<!-- form die opgehaald kan worden door javascript -->
+			<input type="text" placeholder="username" id="username"
+				name="username"></input><br /> <input type="password"
+				placeholder="wachtwoord" id="wachtwoord" name="wachtwoord"></input>
+			<br /> <br /> <input type="button" id="delete" value="Delete!"
+				onClick="deleteGebruiker()" class="smallbutton"></input>
+			<!-- Klikken op deze button activeert het javascript -->
 		</form>
+
+
 	</div>
 
 </body>

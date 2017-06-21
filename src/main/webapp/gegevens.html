@@ -4,26 +4,42 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>overzicht van de gegevens</title>
+<!-- importeer CSS, jquery en javascript -->
 <link rel="stylesheet" type="text/css" href="general.css">
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="gegevens.js"></script>
 </head>
 
 <body>
+	<!-- Titel -->
 	<h1>OVERZICHT VAN DE GEGEVENS</h1>
 
+	<!-- Navigatie -->
 	<div id="navbar">
 		<ul>
 			<li><a href="/slaapapp/index.html">index</a></li>
-			<li><a href="/slaapapp/tijd_invoer.html">tijden invoeren</a></li>
 			<li><a href="/slaapapp/advies.html">advies</a></li>
+			<li><a href="/slaapapp/gev_invoer.html">registreren</a></li>
+			<li>
+				<div class="dropdown">
+					<!-- Dropdown navigatie -->
+					<span>gebruikerscontent</span>
+					<div class="dropdown-content">
+						<a href="/slaapapp/tijd_invoer.html">tijden invoeren</a><br /> <a
+							href="/slaapapp/inlog.html">gegevens inkijken</a><br /> <a
+							href="/slaapapp/admin.html">administratie</a><br />
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 
+	<!-- Content -->
 	<div id="textbox">
-	
+		<!-- Functie aanroep om specifieke datum te zoeken -->
 		<input type="text" id="zoekInput" onkeyup="zoekGegevens()"
 			placeholder="Zoek bepaalde datum..."> <br />
+		<!-- Tabel met gegevens -->
 		<table id="alles">
 			<tr>
 				<th>Datum</th>
@@ -32,16 +48,18 @@
 				<th>Totale tijd</th>
 			</tr>
 		</table>
+		<!-- tabel om functies uit te voeren -->
 		<table id="wijzig">
 			<tr>
 				<td colspan="2"><input type="button" id="smallbutton"
-					value="BEREKEN GEMIDDELDE" onclick="CountRows()" /><br /> <br />
-					<br /> VERKEERDE TIJDEN ERGENS INGEVULD?? PAS ZE DAN HIER AAN:<br />
-				</td>
+					value="BEREKEN GEMIDDELDE" onclick="CountRows()" /> <!-- roep de functie aan om een gemiddelde te berekenen -->
+					<br /> <br /> <br /> VERKEERDE TIJDEN ERGENS INGEVULD?? PAS ZE
+					DAN HIER AAN:<br /></td>
 			</tr>
 			<tr>
 				<td>
 					<form id="updateform" enctype="application/x-www-form-urlencoded">
+						<!-- formulier waaruit de gegevens voor een update gehaald gaan worden -->
 						<input type="text" placeholder="username" id="username"
 							name="username"></input><br /> <input type="date" id="datum"
 							name="datum" /><br /> BEGINTIJD: <input type="time"
@@ -50,7 +68,8 @@
 					</form>
 				</td>
 				<td><input type="button" id="put" onClick="updateGegevens()"
-					value="Update" class="smallbutton" /></td>
+					value="Update" class="smallbutton" /> <!-- button die de functie aanroept -->
+				</td>
 			</tr>
 		</table>
 

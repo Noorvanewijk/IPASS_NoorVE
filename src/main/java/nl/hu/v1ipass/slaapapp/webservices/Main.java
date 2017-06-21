@@ -25,73 +25,78 @@ import nl.hu.v1ipass.slaapapp.DAO.GegevensDAO;
 import nl.hu.v1ipass.slaapapp.entity.Gebruiker;
 import nl.hu.v1ipass.slaapapp.entity.Gegevens;
 
-/* --------------------------- GEBRUIKER CONNECTIE (CRUD INSERT) */
-@Path("/")
+@Path("/") //geen speciaal pad verder toegevoegd
 public class Main {
-	
+	/* --- POST FUNCTIES : REGISTRATIE, INLOG EN TOEVOEGEN --- */
 	@POST
 	@Path("/register")
-	public String Registreer(@FormParam("username") String username, @FormParam("wachtwoord") String wachtwoord,
+	//haal alle gegevens op
+	public String registreer(@FormParam("username") String username, @FormParam("wachtwoord") String wachtwoord,
 			@FormParam("voornaam") String voornaam, @FormParam("achternaam") String achternaam) {
-		
+		//maak nieuwe gebruiker met deze gegevens
 		Gebruiker gebruiker = new Gebruiker(username, wachtwoord, voornaam, achternaam);
-
+		//maak een GEBRUIKERdao zodat je functies hieruit kan gebruiken
 		GebruikerDAO dao = new GebruikerDAO();
-
-		if (dao.CheckUsername(username)) {
-			dao.MaakGebruiker(gebruiker);
+		//check of de username niet al bestaat
+		if (dao.checkUsername(username)) {
+			dao.maakGebruiker(gebruiker); //maak gebruiker
 			return "success";
 		}
 
 		return "error";
 	}
 
-	
 	@POST
 	@Path("/login")
-	public String Login(@FormParam("username") String username, @FormParam("wachtwoord") String wachtwoord) {
-		GebruikerDAO dao = new GebruikerDAO();
-		Gebruiker g = dao.VindUsername(username);
+	//haal username en wachtwoord op
+	public String login(@FormParam("username") String username, @FormParam("wachtwoord") String wachtwoord) {
+		GebruikerDAO dao = new GebruikerDAO(); //roep dao aan zodat hij gebruikt kan worden
+		Gebruiker g = dao.vindUsername(username); //gebruik de vindUsername functie om te checken of dat username bestaat
 		
-		if (g.getWachtwoord().equals(wachtwoord)) {
-			return "success";
+		if (g.getWachtwoord().equals(wachtwoord)) { //check of het wachtwoord van de username gelijk is aan het wachtwoord in de database
+				return "success"; //is gelijk aan wachtwoord
 		}
 
-		return null;
+		return "Ongeldige wachtwoord!"; //is niet gelijk aan wachtwoord
 	}
-
-	/* ------------------------------------- GEGEVENS CONNECTIE (CRUD INSERT) */
 
 	@POST
 	@Path("/voegtoe")
-	public String VoegTijdenToe(@FormParam("username") String username, @FormParam("h_datum") String datum,
+	//haal alle gegevens op: username, begintijd, eindtijd en datum
+	public String voegTijdenToe(@FormParam("username") String username, @FormParam("h_datum") String datum,
 			@FormParam("b_tijd") String begintijd, @FormParam("e_tijd") String eindtijd) {
+		//maak een nieuwe klasse gegevens aan met deze waardes
 		Gegevens gegevens = new Gegevens(username, datum, begintijd, eindtijd);
 
+		//beide dao's zijn nodig dus die worden allebei aangeroepen!
 		GegevensDAO gdao = new GegevensDAO();
 		GebruikerDAO dao = new GebruikerDAO();
+		
+		//gebruiker dao wordt gebruikt om te kijken of de username uberhaupt wel bestaat
+		Gebruiker g = dao.vindUsername(username);
 
-		Gebruiker g = dao.VindUsername(username);
-
+		//vervolgens wordt vergeleken of de username overeenkomt
 		if (g.getUsername().equals(username)) {
-			gdao.VoegGegevensToe(gegevens);
-			return "miep";
+			gdao.voegGegevensToe(gegevens);
+			return "success"; //username komt overeen dus worden de gegevens toegevoegd
 		}
 
-		return "Er bestaat geen account met deze username!";
+		return "error"; //er bestaat geen gebruiker met deze username
 	}
 
+	/* --- GET FUNCTIES : VEEL OP VEEL, EEN OP VEEL --- */
+	
 	@GET
-	@Path("/alles")
+	@Path("/alles") //veel op veel relatie
 	@Produces("application/json")
 	public String getGebruikers() {
-		JsonArrayBuilder jab = Json.createArrayBuilder();
-		GegevensDAO gdao = new GegevensDAO();
-		List<Gegevens> gegevens = gdao.geefAlleGegevens();
+		JsonArrayBuilder jab = Json.createArrayBuilder(); //array builder om een lijst aan te kunnen maken
+		GegevensDAO gdao = new GegevensDAO(); //haal dao op zodat deze gebruikt kan worden
+		List<Gegevens> gegevens = gdao.geefAlleGegevens(); //maak een lijst en zet hier alle gegevens in
 
-		for (Gegevens g : gegevens) {
+		for (Gegevens g : gegevens) { //voor iedere waarde uit de lijst:
 			JsonObjectBuilder job = Json.createObjectBuilder();
-
+			//maak een object builder en voeg via deze object builder waardes toe aan de Array
 			job.add("username", g.getUsername());
 			job.add("datum", g.getDatum());
 			job.add("begintijd", g.getBegintijd());
@@ -101,17 +106,18 @@ public class Main {
 		JsonArray array = jab.build();
 		return array.toString();
 	}
-	
-	@GET
-	@Path("/alles/{username}")
-	@Produces("application/json")
-	public String getGegevens(@PathParam("username") String username) {
-		JsonArrayBuilder jab = Json.createArrayBuilder();
-		GegevensDAO gdao = new GegevensDAO();
-		List<Gegevens> lijst = gdao.geefAllesPerUsername(username);
 
-		for (Gegevens naam : lijst) {
+	@GET
+	@Path("/alles/{username}") //veel op veel, aan de hand van username
+	@Produces("application/json")
+	public String getGegevens(@PathParam("username") String username) { //gebruik de username om specifieke waardes te krijgen
+		JsonArrayBuilder jab = Json.createArrayBuilder(); //array builder om een lijst aan te kunnen maken
+		GegevensDAO gdao = new GegevensDAO(); //haal dao op zodat deze gebruikt kan worden
+		List<Gegevens> lijst = gdao.geefAllesPerUsername(username); //in tegenstelling tot de vorige code selecteert deze alle gegevens met een bepaalde username
+
+		for (Gegevens naam : lijst) { //voor iedere waarde uit de lijst:
 			JsonObjectBuilder job = Json.createObjectBuilder();
+			//maak een object builder en voeg via deze object builder waardes toe aan de Array
 			job.add("datum", naam.getDatum());
 			job.add("begintijd", naam.getBegintijd());
 			job.add("eindtijd", naam.getEindtijd());
@@ -122,43 +128,47 @@ public class Main {
 
 	}
 
-	/*------------------------------ CRUD */
+	/* --- DELETE FUNCTIE : DELETE GEBRUIKER --- */
 
 	@DELETE
-	@Path("/deletegebruiker/{username}")
-	public Response deleteGebruiker(@PathParam("username") String username, @FormParam("wachtwoord") String wachtwoord) {
-		GebruikerDAO rDAO = new GebruikerDAO();
-		Gebruiker gebruiker = rDAO.zoekUsername(username);
+	@Path("/deletegebruiker/{username}") //specifiek op username
+	public Response deleteGebruiker(@PathParam("username") String username,
+			@FormParam("wachtwoord") String wachtwoord) { //wachtwoord en username zijn nodig voor de check, dus die worden opgehaald
+		GebruikerDAO rDAO = new GebruikerDAO(); //haal de gebruikerdao op zodat deze gebruikt kan worden
+		Gebruiker gebruiker = rDAO.zoekUsername(username); //zoek met de dao de username op
 
-		for (Gebruiker r : rDAO.GeefAlleGebruikers())
-			if (r.getUsername() == username && r.getWachtwoord() == wachtwoord) {
+		for (Gebruiker r : rDAO.GeefAlleGebruikers()) //voor iedere gebruiker in de lijst:
+			if (r.getUsername() == username && r.getWachtwoord() == wachtwoord) { //als wachtwoord en username gelijk zijn
 				gebruiker = r;
 			}
-		if (gebruiker == null) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+		if (gebruiker == null) { //als de gebruiker niet bestaat
+			return Response.status(Response.Status.NOT_FOUND).build(); //error
 		} else {
-			rDAO.deleteGebruiker(gebruiker);
+			rDAO.deleteGebruiker(gebruiker); //delete gebruiker
 			return Response.ok().build();
-
 		}
 	}
-
+	
+	/* --- PUT FUNCTIES : UPDATE GEGEVENS --- */
+	
 	@PUT
-	@Path("/update/{username}") /*update via username */
+	@Path("/update/{username}") //update aan de hand van username (en datum, maar deze check staat in de dao)
 	@Produces("application/json")
 	public String updateGegevens(@PathParam("username") String username, @FormParam("datum") String datum,
-			@FormParam("begintijd") String begintijd, @FormParam("eindtijd") String eindtijd) throws SQLException {
+			@FormParam("begintijd") String begintijd, @FormParam("eindtijd") String eindtijd) throws SQLException { //haal alle gegevens op, SQLException omdat er in de dao met sql gewerkt wordt
 		JsonObjectBuilder job = Json.createObjectBuilder();
-		
-		GegevensDAO dao = new GegevensDAO();
-		Gegevens g = new Gegevens();
-		
+
+		GegevensDAO dao = new GegevensDAO(); //haal gegevens dao op
+		Gegevens g = new Gegevens(); //maak nieuwe gegevens
+
+		//zet alle opgehaalde waardes in nieuwe gegevens
 		g.setUsername(username);
 		g.setDatum(datum);
 		g.setBegintijd(begintijd);
 		g.setEindtijd(eindtijd);
-		dao.updateGegevens(g);
+		dao.updateGegevens(g); //stuur ze door om up te daten
 
+		//na update pas je de waarden aan in het json object zodat ze ook correct op de html pagina weergegeven kunnen worden
 		job.add("username", username);
 		job.add("datum", datum);
 		job.add("begintijd", begintijd);
@@ -166,6 +176,5 @@ public class Main {
 
 		return job.build().toString();
 	}
-	
-	
+
 }

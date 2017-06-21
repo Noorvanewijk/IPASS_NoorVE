@@ -4,24 +4,40 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>tijden invoeren</title>
+<!-- Importeer CSS, jquery en javascript -->
 <link rel="stylesheet" type="text/css" href="general.css">
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="functions.js"></script>
 </head>
 
 <body>
+	<!-- Titel -->
 	<h1>TIJDEN INVOEREN</h1>
 
+	<!-- Navigatie -->
 	<div id="navbar">
 		<ul>
-			<li><a href="/slaapapp/gegevens.html">gegevens inkijken</a></li>
+			<li><a href="/slaapapp/index.html">index</a></li>
 			<li><a href="/slaapapp/advies.html">advies</a></li>
-			<li><a href="/slaapapp/index.html">terug</a></li>
+			<li><a href="/slaapapp/gev_invoer.html">registreren</a></li>
+			<li>
+				<div class="dropdown">
+					<!-- Dropdown navigatie -->
+					<span>gebruikerscontent</span>
+					<div class="dropdown-content">
+						<a href="/slaapapp/tijd_invoer.html">tijden invoeren</a><br /> <a
+							href="/slaapapp/inlog.html">gegevens inkijken</a><br /> <a
+							href="/slaapapp/admin.html">administratie</a><br />
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 
+	<!-- Content -->
 	<div id="textbox">
 		<form id="voegtoe">
+			<!-- formulier waaruit de gegevens worden opgehaald -->
 			<table>
 				<tr>
 					<td>USERNAME:</td>
@@ -41,27 +57,12 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="button" name="voegtoe"
-						value="VERSTUUR" id="smallbutton" onClick="voegToe()"></input></td>
+						value="VERSTUUR" id="smallbutton" onClick="voegToe()"></input> <!-- klikken op deze button activeert de functie -->
+					</td>
 				</tr>
 			</table>
 		</form>
-		<br /> <br /> Interdum et malesuada fames ac ante ipsum primis in
-		faucibus. Etiam pulvinar cursus lacus. Ut tortor nunc, consequat eu
-		interdum sed, pretium venenatis mi. Nullam commodo odio ut auctor
-		dignissim. Nunc scelerisque erat ornare ligula consectetur, a sagittis
-		mauris pharetra. Donec feugiat ex sem, eget consequat dui feugiat a.
-		Cras elementum odio augue, id elementum dolor elementum ut. Curabitur
-		semper, felis sit amet luctus iaculis, velit mauris feugiat metus, a
-		gravida nunc mauris sed tellus. Phasellus viverra nibh vitae diam
-		volutpat scelerisque. Cras sit amet quam eu sem luctus venenatis.
-		Curabitur eget felis volutpat, congue lectus id, accumsan nisl.
-		Suspendisse dignissim massa rhoncus sapien euismod, mattis viverra
-		urna varius. Vivamus malesuada, ante at porta faucibus, mi nunc
-		scelerisque quam, eu porttitor augue nisl ac tellus. Cras malesuada
-		nibh ut neque lobortis, nec interdum arcu pretium. In auctor quam
-		convallis sem lacinia consequat. Vestibulum egestas, dui nec faucibus
-		pellentesque, sem mauris imperdiet felis, rutrum vestibulum ex velit
-		ut massa.
+		<br /> <br /> INFORMATIE INFORMATIE INFORMATIE INFORMATIE INFORMATIE
 	</div>
 
 </body>

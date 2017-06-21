@@ -4,21 +4,44 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>registratie</title>
+<!-- Importeer CSS, jquery en javascript -->
 <link rel="stylesheet" type="text/css" href="general.css">
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="functions.js"></script>
 </head>
 
 <body>
-	<h1>REGISTRATIE: GEGEVENS INVOEREN</h1>
+	<!-- Titel  -->
+	<h1>REGISTRATIE</h1>
 
+	<!-- Navigatie -->
+	<div id="navbar">
+		<ul>
+			<li><a href="/slaapapp/index.html">index</a></li>
+			<li><a href="/slaapapp/advies.html">advies</a></li>
+			<li><a href="/slaapapp/gev_invoer.html">registreren</a></li>
+			<li>
+				<div class="dropdown">
+					<!-- Dropdown navigatie -->
+					<span>gebruikerscontent</span>
+					<div class="dropdown-content">
+						<a href="/slaapapp/tijd_invoer.html">tijden invoeren</a><br /> <a
+							href="/slaapapp/inlog.html">gegevens inkijken</a><br /> <a
+							href="/slaapapp/admin.html">administratie</a><br />
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Content -->
 	<div id="textbox">
 		<br /> INFORMATIE OVER DE REGISTRATIE<br /> USERNAME MOET UNIEK
 		ZIJN, ANDERS GAAT HET NIET<br /> ONTHOUDT JE USERNAME GOED - WANT
 		DEZE HEB JE LATER NODIG OM GEGEVENS IN TE ZIEN EN OP TE VRAGEN!<br />
-		<br />
-		<br />
+		<br /> <br />
 		<form id="regiform">
+			<!-- Form waaruit de informatie gehaald gaat worden -->
 			<table>
 				<tr>
 					<td>USERNAME:</td>
@@ -29,16 +52,17 @@
 					<td><input type="text" name="wachtwoord"></input></td>
 				</tr>
 				<tr>
-					<td>VOORnaam:</td>
+					<td>Voornaam:</td>
 					<td><input type="text" name="voornaam"></input></td>
 				</tr>
 				<tr>
-					<td>ACHTERnaam:</td>
+					<td>Achternaam:</td>
 					<td><input type="text" name="achternaam"></input></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="button" value="REGISTREREN"
-						name="registreren" id="smallbutton" onClick="regiGebruiker()"></input></td>
+						name="registreren" id="smallbutton" onClick="regiGebruiker()"></input> <!-- klikken op deze button activeert de functie -->
+					</td>
 				</tr>
 			</table>
 		</form>
